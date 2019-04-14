@@ -13,10 +13,10 @@ public interface ResourceRepo extends JpaRepository<ResourceDbo, String> {
     @Query("select count(r) from ResourceDbo r where r.resourceName = ?1 and r.resourceType = ?2 and r.revoked = false and r.parentId = ?3")
     Integer countValidResourceByResourceNameAndResourceTypeAndParentId(String resourceName, ResourceTypeEnum resourceType, String parentId);
 
-    @Query("select count(r) from ResourceDbo r where r.resourceName = ?1 and r.resourceType = tech.tongyu.bct.auth.enums.ResourceTypeEnum.ROOT and r.parentId is null and r.revoked = false ")
+    @Query("select count(r) from ResourceDbo r where r.resourceName = ?1 and r.resourceType = com.github.rudylucky.auth.enums.ResourceTypeEnum.ROOT and r.parentId is null and r.revoked = false ")
     Integer countValidRootResource(String resourceName);
 
-    @Query("select count(r) from ResourceDbo r where r.resourceType = tech.tongyu.bct.auth.enums.ResourceTypeEnum.ROOT and r.parentId is null and r.revoked = false ")
+    @Query("select count(r) from ResourceDbo r where r.resourceType = com.github.rudylucky.auth.enums.ResourceTypeEnum.ROOT and r.parentId is null and r.revoked = false ")
     Integer countValidRootResource();
 
     @Query("select r from ResourceDbo r where r.resourceType = ?1 and r.revoked = false ")
@@ -31,10 +31,10 @@ public interface ResourceRepo extends JpaRepository<ResourceDbo, String> {
     @Query("from ResourceDbo r where r.revoked = false and r.resourceName = ?1 and r.resourceType = ?2 and r.parentId = ?3")
     Optional<ResourceDbo> findValidResourceByResourceNameAndResourceTypeAndParentId(String resourceName, ResourceTypeEnum resourceType, String parentId);
 
-    @Query("from ResourceDbo r where r.revoked = false and r.resourceName = ?1 and r.resourceType = tech.tongyu.bct.auth.enums.ResourceTypeEnum.ROOT and r.parentId is null")
+    @Query("from ResourceDbo r where r.revoked = false and r.resourceName = ?1 and r.resourceType = com.github.rudylucky.auth.enums.ResourceTypeEnum.ROOT and r.parentId is null")
     Optional<ResourceDbo> findValidRootResourceByResourceName(String resourceName);
 
-    @Query("from ResourceDbo r where r.revoked = false and r.resourceType = tech.tongyu.bct.auth.enums.ResourceTypeEnum.ROOT and r.parentId is null")
+    @Query("from ResourceDbo r where r.revoked = false and r.resourceType = com.github.rudylucky.auth.enums.ResourceTypeEnum.ROOT and r.parentId is null")
     Optional<ResourceDbo> findValidRootResource();
 
     @Query("from ResourceDbo r where r.revoked = false")
