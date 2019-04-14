@@ -1,7 +1,7 @@
 package com.github.rudylucky.auth.controller;
 
 import com.github.rudylucky.auth.captcha.CaptchaConfig;
-import com.github.rudylucky.auth.service.impl.ServiceConfig;
+import com.github.rudylucky.auth.service.ServiceConfig;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.Import;

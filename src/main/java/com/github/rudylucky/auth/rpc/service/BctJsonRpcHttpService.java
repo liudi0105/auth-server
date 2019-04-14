@@ -31,7 +31,7 @@ public class BctJsonRpcHttpService {
         methodCache = Maps.newConcurrentMap();
         Reflections reflections = new Reflections(
                 new ConfigurationBuilder()
-                        .setUrls(ClasspathHelper.forPackage("tech.tongyu.bct"))
+                        .setUrls(ClasspathHelper.forPackage("com.github.rudylucky"))
                         .setScanners(new MethodAnnotationsScanner())
         );
         Set<Method> apis = reflections.getMethodsAnnotatedWith(BctMethodInfo.class);

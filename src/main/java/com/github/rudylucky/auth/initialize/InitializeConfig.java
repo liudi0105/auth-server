@@ -1,6 +1,6 @@
 package com.github.rudylucky.auth.initialize;
 
-import com.github.rudylucky.auth.service.impl.ServiceConfig;
+import com.github.rudylucky.auth.service.ServiceConfig;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.Import;

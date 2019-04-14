@@ -36,7 +36,6 @@ public class AuthServiceInitializer {
     private ResourcePermissionManager resourcePermissionManager;
     private DepartmentManager departmentManager;
     private PageComponentManager pageComponentManager;
-    private PageComponentServiceImpl pageComponentService;
 
     @Autowired
     public AuthServiceInitializer(
@@ -53,7 +52,6 @@ public class AuthServiceInitializer {
         this.resourcePermissionManager = resourcePermissionManager;
         this.departmentManager = departmentManager;
         this.pageComponentManager = pageComponentManager;
-        this.pageComponentService = pageComponentService;
     }
 
     @Bean
@@ -69,10 +67,10 @@ public class AuthServiceInitializer {
     @Transactional
     CommandLineRunner dbInitialize(){
         return (args) -> {
-            String companyName = "上海同余信息科技有限公司";
+            String companyName = "公司";
             if(!departmentManager.hasCompanyInfo())
-                departmentManager.createCompanyInfo(companyName, "金融科技", "xxxxxxxxxx"
-                    , "金斌", "jinbin@tongyu.tech", companyName);
+                departmentManager.createCompanyInfo(companyName, "科技", "xxxxxxxxxx"
+                    , "rudy", "rudylucky@github.com", companyName);
             DepartmentDTO departmentDto;
 
             List<String> roleIdList = Lists.newArrayList();
@@ -123,26 +121,6 @@ public class AuthServiceInitializer {
                                 , ResourcePermissionTypeEnum.DELETE_ROLE
                                 , ResourcePermissionTypeEnum.UPDATE_ROLE
                         ));
-            }
-
-            String marginName = "保证金";
-            ResourceDTO rootResource = resourceManager.getRootResource();
-            if (!resourceManager.isResourceExist(marginName, ResourceTypeEnum.MARGIN, rootResource.getId())) {
-                resourceManager.createResource(marginName, ResourceTypeEnum.MARGIN, rootResource.getId(), departmentDto.getId(), 0);
-                resourcePermissionManager.createResourcePermissions(AuthConstants.ADMIN, marginName, ResourceTypeEnum.MARGIN, rootResource.getId(),
-                        Lists.newArrayList(
-                                ResourcePermissionTypeEnum.GRANT_ACTION
-                        ));
-            }
-
-            String clientInfoName = "客户信息";
-            if (!resourceManager.isResourceExist(clientInfoName, ResourceTypeEnum.CLIENT_INFO, rootResource.getId())) {
-                resourceManager.createResource(clientInfoName, ResourceTypeEnum.CLIENT_INFO, rootResource.getId(), departmentDto.getId(), 0);
-                resourcePermissionManager.createResourcePermissions(AuthConstants.ADMIN, clientInfoName, ResourceTypeEnum.CLIENT_INFO, rootResource.getId()
-                        , Lists.newArrayList(
-                                ResourcePermissionTypeEnum.GRANT_ACTION
-                        )
-                );
             }
         };
     }

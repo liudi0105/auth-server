@@ -13,7 +13,7 @@ repositories {
 }
 
 ext {
-    springBootVersion = '2.0.4.RELEASE'
+    springBootVersion = '2.1.0.RELEASE'
     jacksonVersion = '2.9.6'
     postgreVersion = '42.2.2'
     vavrVersion = '0.9.2'
